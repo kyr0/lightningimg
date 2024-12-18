@@ -1,0 +1,42 @@
+{
+  "name": "lightningimg",
+  "description": "A transparent and safe image converter. Encodes PNG, JPG, TIFF to WebP.",
+  "author": "Aron Homberg <info@aron-homberg.de>",
+  "license": "MIT",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "artifacts": "napi artifacts",
+    "build": "napi build --platform --release",
+    "build:debug": "napi build",
+    "prepublishOnly": "napi prepublish -t npm",
+    "clean": "rm -rf ./target",
+    "pretest": "npm run build",
+    "test": "ava",
+    "version": "napi version"
+  },
+  "napi": {
+    "name": "lightningimg",
+    "triples": {
+      "additional": [
+        "x86_64-apple-darwin",
+        "aarch64-apple-darwin",
+        "x86_64-unknown-linux-gnu",
+        "aarch64-unknown-linux-gnu",
+        "x86_64-pc-windows-msvc",
+        "aarch64-pc-windows-msvc"
+      ]
+    }
+  },
+  "ava": {
+    "timeout": "3m"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^1.0.0",
+    "ava": "^6.1.3"
+  }
+}
