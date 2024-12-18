@@ -65,9 +65,6 @@ jobs:
         with:
           tool: cargo-zigbuild,cargo-xwin
 
-      - name: Install cargo-zigbuild
-        run: cargo install cargo-zigbuild
-
       - name: Install Rust targets
         run: |
           rustup target add ${{ matrix.targets }}
