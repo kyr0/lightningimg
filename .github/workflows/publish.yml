@@ -71,6 +71,7 @@ jobs:
       - run: pnpm --filter ./lightningimg-nodejs run build --target ${{ matrix.targets }}
         env:
           XWIN_CACHE_DIR: ${{ github.workspace }}/.xwin
+          
       - uses: actions/upload-artifact@v4
         with:
           name: bindings-${{ matrix.targets }}
@@ -137,7 +138,7 @@ jobs:
           path: lightningimg-nodejs/
       - name: Run tests
         run: pnpm --filter ./lightningimg-nodejs run test
-        
+
   test-docker:
     strategy:
       fail-fast: false
