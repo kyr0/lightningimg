@@ -65,17 +65,13 @@ jobs:
         with:
           tool: cargo-zigbuild,cargo-xwin
 
+      - name: Install cargo-zigbuild
+        run: cargo install cargo-zigbuild
+
       - name: Install Rust targets
         run: |
           rustup target add ${{ matrix.targets }}
           rustup show | grep ${{ matrix.targets }}
-
-      - name: Verify Rust toolchains and tools
-        run: |
-          cargo --version
-          rustup show active-toolchain
-          cargo zigbuild --version || echo "cargo-zigbuild not installed"
-          cargo xwin --version || echo "cargo-xwin not installed"
 
       - name: Install dependencies
         run: pnpm install
