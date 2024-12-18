@@ -8,6 +8,9 @@
 
 ## API
 
+It's super simple! Take a look at the [`./example`](./example/index.js) folder. 
+Please keep in mind to install `lightningimg` as a dependency in your project (see [`./example/package.json`](./example/package.json)).
+
 ```js
 import { processDirectoryDestructive, processDirectory } from "lightningimg"
 

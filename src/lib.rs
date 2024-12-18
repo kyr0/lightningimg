@@ -1,3 +1,8 @@
+#![deny(clippy::all)]
+
+#[macro_use]
+extern crate napi_derive;
+
 use napi::bindgen_prelude::*;
 use napi_derive::napi;
 use image::{ImageReader, DynamicImage};

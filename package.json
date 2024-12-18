@@ -7,8 +7,10 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "scripts": {
-    "build": "MACOSX_DEPLOYMENT_TARGET=11.0 SDKROOT=$(xcrun --sdk macosx --show-sdk-path) napi build --platform --release",
-    "build:debug": "MACOSX_DEPLOYMENT_TARGET=11.0 SDKROOT=$(xcrun --sdk macosx --show-sdk-path) napi build",
+    "artifacts": "napi artifacts",
+    "build": "napi build --platform --release",
+    "build:debug": "napi build",
+    "prepublishOnly": "napi prepublish -t npm",
     "clean": "rm -rf ./target",
     "pretest": "npm run build",
     "test": "node ./test.js"
@@ -17,7 +19,7 @@
     "name": "lightningimg",
     "triples": {
       "defaults": true,
-     "additional": [
+      "additional": [
         "x86_64-apple-darwin",
         "aarch64-apple-darwin",
         "x86_64-unknown-linux-gnu",
@@ -29,5 +31,13 @@
   },
   "devDependencies": {
     "@napi-rs/cli": "^1.0.0"
+  },
+  "optionalDependencies": {
+    "lightningimg-win32-x64-msvc": "0.0.1",
+    "lightningimg-darwin-x64": "0.0.1",
+    "lightningimg-linux-x64-gnu": "0.0.1",
+    "lightningimg-darwin-arm64": "0.0.1",
+    "lightningimg-linux-arm64-gnu": "0.0.1",
+    "lightningimg-win32-arm64-msvc": "0.0.1"
   }
 }
