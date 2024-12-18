@@ -65,13 +65,25 @@ jobs:
         with:
           tool: cargo-zigbuild,cargo-xwin
 
+      - name: Install Rust targets
+        run: |
+          rustup target add ${{ matrix.targets }}
+          rustup show | grep ${{ matrix.targets }}
+
+      - name: Verify Rust toolchains and tools
+        run: |
+          cargo --version
+          rustup show active-toolchain
+          cargo zigbuild --version || echo "cargo-zigbuild not installed"
+          cargo xwin --version || echo "cargo-xwin not installed"
+
       - name: Install dependencies
         run: pnpm install
 
       - run: pnpm --filter ./lightningimg-nodejs run build --target ${{ matrix.targets }}
         env:
           XWIN_CACHE_DIR: ${{ github.workspace }}/.xwin
-          
+
       - uses: actions/upload-artifact@v4
         with:
           name: bindings-${{ matrix.targets }}
